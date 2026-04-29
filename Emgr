@@ -1,0 +1,28 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+
+proxies:
+  - {"name":"Ralysnd-443-Custom_7522sg","type":"vless","server":"185.162.216.47","port":443,"uuid":"3ed91cef-a105-4d34-8094-4cfb85498a96","tls":true,"servername":"haf-cf8.pages.dev","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/%3Fed%3D2048","headers":{"Host":"haf-cf8.pages.dev"}},"client-fingerprint":"chrome","udp":true}
+  - {"name":"Ralysnd-2053-Custom_7522sg_2","type":"vless","server":"185.162.216.47","port":2053,"uuid":"3ed91cef-a105-4d34-8094-4cfb85498a96","tls":true,"servername":"haf-cf8.pages.dev","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/%3Fed%3D2048","headers":{"Host":"haf-cf8.pages.dev"}},"client-fingerprint":"android","udp":true}
+  - {"name":"Ralysnd-2083-Custom_7522sg_3","type":"vless","server":"185.162.216.47","port":2083,"uuid":"3ed91cef-a105-4d34-8094-4cfb85498a96","tls":true,"servername":"haf-cf8.pages.dev","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/%3Fed%3D2048","headers":{"Host":"haf-cf8.pages.dev"}},"client-fingerprint":"safari","udp":true}
+  - {"name":"Ralysnd-2087-Custom_7522sg_4","type":"vless","server":"185.162.216.47","port":2087,"uuid":"3ed91cef-a105-4d34-8094-4cfb85498a96","tls":true,"servername":"haf-cf8.pages.dev","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/%3Fed%3D2048","headers":{"Host":"haf-cf8.pages.dev"}},"client-fingerprint":"ios","udp":true}
+  - {"name":"Ralysnd-2096-Custom_7522sg_5","type":"vless","server":"185.162.216.47","port":2096,"uuid":"3ed91cef-a105-4d34-8094-4cfb85498a96","tls":true,"servername":"haf-cf8.pages.dev","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/%3Fed%3D2048","headers":{"Host":"haf-cf8.pages.dev"}},"client-fingerprint":"android","udp":true}
+  - {"name":"Ralysnd-8443-Custom_7522sg_6","type":"vless","server":"185.162.216.47","port":8443,"uuid":"3ed91cef-a105-4d34-8094-4cfb85498a96","tls":true,"servername":"haf-cf8.pages.dev","skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/%3Fed%3D2048","headers":{"Host":"haf-cf8.pages.dev"}},"client-fingerprint":"ios","udp":true}
+
+proxy-groups:
+  - name: Proxy
+    type: select
+    proxies:
+      - Ralysnd-443-Custom_7522sg
+      - Ralysnd-2053-Custom_7522sg_2
+      - Ralysnd-2083-Custom_7522sg_3
+      - Ralysnd-2087-Custom_7522sg_4
+      - Ralysnd-2096-Custom_7522sg_5
+      - Ralysnd-8443-Custom_7522sg_6
+
+rules:
+  - GEOIP,IR,DIRECT
+  - MATCH,Proxy
